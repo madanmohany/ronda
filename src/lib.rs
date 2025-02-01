@@ -105,11 +105,12 @@ fn value<'a>(it: &'a Value, c @ Context { nl, .. }: Context) -> impl Display + '
             f,
             "{}({})",
             option(ident, |ident| ws_followed_min(ident, c, &|s, _| s)),
-            if fields.values.len() > 1 {
-                separated_split(fields, &crate::value, c).to_string()
-            } else {
-                separated_min(fields, c, &crate::value).to_string()
-            }
+            // if fields.values.len() > 1 {
+            //     separated_split(fields, &crate::value, c).to_string()
+            // } else {
+            //     separated_min(fields, c, &crate::value).to_string()
+            // }
+            separated_min(fields, c, &crate::value).to_string()
         ),
         Value::Struct(Struct { ident, fields }) => {
             write!(
